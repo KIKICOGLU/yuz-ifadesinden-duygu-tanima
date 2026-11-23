@@ -102,7 +102,7 @@ yuz-ifadesinden-duygu-tanima/
 Gereksinimler: Windows 10/11, Python 3.10, web kamerası (canlı demo için). GPU gerekmez.
 
 ```powershell
-git clone https://github.com/<kullanici-adi>/yuz-ifadesinden-duygu-tanima.git
+git clone https://github.com/KIKICOGLU/yuz-ifadesinden-duygu-tanima.git
 cd yuz-ifadesinden-duygu-tanima
 
 python -m venv env_fer
@@ -138,6 +138,8 @@ Projeyi iki yoldan çalıştırabilirsiniz: **kontrol panelinden** ya da **VS Co
 | **Canlı kamera** | Kameradan anlık duygu tanıma; `q` ya da **Bitir ve kaydet** ile bitince özet çıkar. Varsayılan olarak yalnızca sayılar kaydedilir, görüntü kaydedilmez. |
 | **Ödev scriptleri** | `kod/` klasöründeki scriptleri değiştirmeden çalıştırır; **VS Code'da aç** ile dosyayı açar. |
 | **Geçmiş** | Panelden yapılan önceki analizleri listeler ve özetlerini gösterir. |
+
+![Kontrol paneli – Fotoğraf sekmesi](docs/ekran_goruntuleri/panel_foto.jpg)
 
 Alttaki günlükte her işin tam komutu yazılır; aynı komut VS Code terminalinde panelsiz de çalışır. Panelin çıktıları `panel/ciktilar/` altında tarihli klasörlere yazılır.
 

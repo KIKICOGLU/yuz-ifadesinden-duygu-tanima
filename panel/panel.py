@@ -73,13 +73,13 @@ TUR_ADI = {"foto": "Fotoğraf", "video": "Video", "canli": "Canlı kamera"}
 ODEV_SCRIPTLERI = [
     ("foto_deneyleri.py", [], "Bütün fotoğraf deneyleri",
      "46 fotoğrafta yüz tespiti karşılaştırması, FER–HSEmotion değerlendirmesi ve OpenFace analizi "
-     "(rapordaki 5.2, 5.3 ve 5.4). Aynı fotoğraflarla aynı sonuçları yeniden üretir.", []),
+     "(rapordaki 7.2, 7.3 ve 7.4). Aynı fotoğraflarla aynı sonuçları yeniden üretir.", []),
     ("duygu_demo.py", [], "Canlı duygu demosu (ana uygulama)",
      "Kamera penceresinde q ile çık. Kapanınca ödevin oturum kaydının üzerine yazar; "
      "panel çalıştırmadan önce eski kaydı yedekler.",
      ["oturum_kaydi.csv", "oturum_ozeti.png", "oturum_ozeti.txt"]),
     ("oturum_ozeti.py", [], "Oturum özeti",
-     "oturum_kaydi.csv'den görüşme özeti çıkarır (rapordaki 5.6).", []),
+     "oturum_kaydi.csv'den görüşme özeti çıkarır (rapordaki 7.6).", []),
     ("degerlendirme.py", ["foto_sonuclari.csv"], "Değerlendirme",
      "Fotoğraf sonuçlarından doğruluk, makro F1 ve karmaşıklık matrisi.", []),
     ("yuz_tespit.py", [], "Yüz tespiti: Haar Cascade",
