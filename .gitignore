@@ -1,0 +1,23 @@
+# Sanal ortamlar
+env_fer/
+env_torch/
+.venv/
+__pycache__/
+*.pyc
+
+# Harici araçlar (OpenFace ayrı indirilir)
+araclar/
+
+# Test fotoğrafları repoya konmaz: python kod/foto_indir.py ile indirilir (Pexels Lisansı)
+kod/veri/fotograflar/
+kod/ciktilar/foto_ornekler/
+kod/ciktilar/openface_foto/
+
+# Panelin kişisel çıktıları ve yedekleri
+panel/ciktilar/
+panel/yedekler/
+
+# Video ve kamera kayıtları
+*.avi
+*.mp4
+kod/ciktilar/ekran_*.png

@@ -1,0 +1,6 @@
+Oturum süresi           : 113.7 sn (2044 kare)
+Ortalama valence        : -0.06
+Ortalama arousal        : +0.04
+Olumsuz anların payı    : %46
+En olumsuz an           : 79.2. sn (valence -0.55)
+Baskın duygu payları    : Nötr %39, Öfke %30, Şaşkınlık %17, Mutluluk %13, Küçümseme %0, Üzüntü %0

@@ -1,0 +1,7 @@
+Fotoğraf sayısı                 : 46
+Haar  - tam bir yüz buldu       : 39 (%85)
+Haar  - hiç yüz bulamadı        : 4 (%9)
+Haar  - birden fazla 'yüz' buldu: 3 (%7)  (tek kişilik fotoğraflarda yanlış alarm)
+YuNet - en az bir yüz buldu     : 46 (%100)
+YuNet - ortalama güven skoru    : 0.91
+Duygu modellerine giren yüz     : 46

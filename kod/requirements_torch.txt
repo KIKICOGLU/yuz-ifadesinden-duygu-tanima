@@ -1,0 +1,12 @@
+# env_torch: GPU (CUDA) doğrulaması ve ileride kendi modelini eğitmek için PyTorch ortamı.
+# Kurulum:
+#   python -m venv env_torch
+#   .\env_torch\Scripts\Activate.ps1
+#   pip install -r requirements_torch.txt --extra-index-url https://download.pytorch.org/whl/cu128
+torch==2.11.0+cu128
+torchvision==0.26.0+cu128
+torchaudio==2.11.0+cu128
+opencv-python==4.14.0.94
+numpy==2.2.6
+hsemotion-onnx==0.3.1
+onnxruntime==1.23.2

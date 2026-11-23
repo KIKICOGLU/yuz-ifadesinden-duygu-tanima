@@ -1,0 +1,20 @@
+# env_fer: demo, karşılaştırma, değerlendirme ve analiz scriptlerinin hepsi bu ortamda çalışır.
+# Kurulum (sıra önemli):
+#   python -m venv env_fer
+#   .\env_fer\Scripts\Activate.ps1
+#   pip install -r requirements_fer.txt
+#   pip install --no-deps --force-reinstall opencv-contrib-python==4.14.0.94
+# Son satır: fer, opencv-contrib-python ister; hsemotion-onnx ise opencv-python.
+# İkisi aynı "cv2" klasörüne yazar. Contrib en son ve AYNI sürümle kurulursa
+# ikisinin de ihtiyacı karşılanır (contrib, normal paketin tamamını içerir).
+tensorflow==2.21.0
+keras==3.12.4
+fer==25.10.3
+hsemotion-onnx==0.3.1
+onnxruntime==1.23.2
+opencv-python==4.14.0.94
+numpy==2.2.6
+scikit-learn==1.7.2
+matplotlib==3.10.9
+# fer, setuptools 81+ sürümlerinde kaldırılan pkg_resources modülünü kullanıyor
+setuptools==80.10.2
