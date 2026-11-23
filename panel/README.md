@@ -5,7 +5,7 @@ dosyayı değiştirmez; oradan yalnızca YuNet model dosyasını okur ve istenir
 VS Code'dan çalıştırır gibi çalıştırır. Kendi çıktılarını `panel/ciktilar/` klasörüne yazar.
 
 ```
-duygu-tanima/
+yuz-ifadesinden-duygu-tanima/
 ├── kod/        ← ödev (teslim edilen kodlar, dokunulmaz)
 └── panel/      ← bu klasör (ek arayüz)
     ├── panel.py               kontrol paneli penceresi
@@ -19,10 +19,11 @@ duygu-tanima/
 
 ## Paneli açmak
 
-PowerShell'de:
+En kolayı: `panel\Paneli_Ac.bat` dosyasına çift tıklamak.
+
+PowerShell'de (repo klasöründeyken):
 
 ```powershell
-cd C:\Projeler\duygu-tanima
 .\env_fer\Scripts\Activate.ps1
 python panel\panel.py
 ```
@@ -51,7 +52,7 @@ Her script tek başına çalışır. Argüman vermeden çalıştırılırsa (ör
 penceresi açılır.
 
 ```powershell
-cd C:\Projeler\duygu-tanima\panel
+cd panel
 
 python foto_degerlendir.py                              # dosya seçme penceresi
 python foto_degerlendir.py C:\Resimler\resim.jpg  

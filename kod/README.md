@@ -1,92 +1,41 @@
-# Yüz İfadesinden Duygu Tanıma
+# kod/ – Ödev kodları
 
-Bilgisayar Mühendisliği 4. sınıf, Görüntü İşleme dersi projesi.
-Hoca önerisi: **Duygu Tanıma** · Yöntemler: **FER, OpenFace, AffectNet** · Alanlar: müşteri hizmetleri, terapi, oyun.
+Projenin deneylerini ve ana demosunu içeren klasör. Kurulum, kullanım kılavuzu ve teknik açıklamalar için ana [README](../README.md) dosyasına bakın.
 
-## Sistem
-
-```
-Kamera karesi
-   │
-   ▼
-Yüz tespiti ── Haar Cascade (2001, karşılaştırma için)
-   │           YuNet (2023, CNN, kutu + 5 yüz noktası)  ← kullanılan
-   ▼
-Kırpma (%15 pay) + BGR→RGB
-   │
-   ├──► HSEmotion (AffectNet ile eğitilmiş EfficientNet-B0)
-   │       8 duygu olasılığı + valence + arousal         ← ana model
-   │
-   ├──► fer (FER-2013 ile eğitilmiş CNN, 7 duygu)          ← karşılaştırma
-   │
-   └──► OpenFace 2.2 (video üzerinden, 17 Action Unit)     ← açıklanabilirlik
-```
-
-## Klasör yapısı
-
-```
-kod/
-├── README.md
-├── requirements_fer.txt, requirements_torch.txt
-├── yuz_tespit.py, yuz_tespit_yunet.py      ← yüz tespiti (Haar ve YuNet)
-├── duygu_demo.py, oturum_ozeti.py           ← ana demo ve uygulama senaryosu
-├── karsilastirma_canli.py, degerlendirme.py ← FER–HSEmotion karşılaştırması
-├── video_kaydet.py, au_analiz.py            ← OpenFace ile Action Unit analizi
-├── modeller/                                ← YuNet modeli (.onnx)
-└── ciktilar/                                ← scriptlerin ürettiği CSV, PNG ve video dosyaları
-```
-
-Scriptler hangi klasörden çalıştırılırsa çalıştırılsın modeli `modeller/` klasöründen okur, bütün çıktıları `ciktilar/` klasörüne yazar.
+Bütün scriptler `env_fer` ortamında çalışır. Hangi klasörden çalıştırılırlarsa çalıştırılsınlar modeli `modeller/` klasöründen okur, çıktıları `ciktilar/` klasörüne yazarlar.
 
 ## Dosyalar
 
 | Dosya | Ne yapar | Çıktı (`ciktilar/` içinde) |
 |---|---|---|
+| `duygu_demo.py` | **Ana demo:** canlı duygu tanıma, 8 duygu çubuğu, valence–arousal dairesi (`q` çıkış, `s` ekran görüntüsü) | `oturum_kaydi.csv`, `ekran_N.png` |
+| `oturum_ozeti.py` | Uygulama senaryosu: görüşmenin duygu özeti (raporda 7.6) | `oturum_ozeti.png`, `oturum_ozeti.txt` |
 | `yuz_tespit.py` | Haar Cascade ile canlı yüz tespiti | ekran |
 | `yuz_tespit_yunet.py` | YuNet ile canlı yüz tespiti, 5 yüz noktası, güven skoru | ekran |
-| `duygu_demo.py` | **Ana demo:** canlı duygu tanıma, 8 duygu çubuğu, valence-arousal dairesi | `ekran_N.png`, `oturum_kaydi.csv` |
-| `oturum_ozeti.py` | Uygulama senaryosu: görüşmenin duygu özeti | `oturum_ozeti.png/.txt` |
-| `karsilastirma_canli.py` | fer ve HSEmotion yan yana; 1–7 tuşlarıyla etiketli veri toplar | `sonuclar.csv`, `karsilastirma_N.png` |
-| `degerlendirme.py` | Doğruluk, F1, confusion matrix | `confusion_matrix.png`, `degerlendirme_sonuclari.txt` |
-| `video_kaydet.py` | OpenFace için etiketli ifade videosu kaydeder | `ifadeler.avi`, `ifadeler_bolumler.csv` |
-| `au_analiz.py` | OpenFace çıktısından Action Unit grafikleri | `au_zaman.png`, `au_isi_haritasi.png`, `au_ozet.txt` |
+| `foto_indir.py` | 46 test fotoğrafını Pexels'ten `veri/fotograflar/` klasörüne indirir | `veri/kaynaklar.csv` |
+| `foto_analiz.py` | Fotoğraflarda Haar–YuNet karşılaştırması ve FER–HSEmotion tahminleri (raporda 7.2, 7.3) | `foto_tespit.csv`, `foto_sonuclari.csv`, `foto_ornek_izgara.png` |
+| `degerlendirme.py` | Doğruluk, makro F1 ve karışıklık matrisi (`python degerlendirme.py foto_sonuclari.csv`) | `*_confusion_matrix.png`, `*_degerlendirme.txt` |
+| `au_analiz_foto.py` | OpenFace çıktısından kas hareketi (AU) ısı haritası (raporda 7.4) | `au_isi_haritasi_foto.png`, `au_ozet_foto.txt` |
+| `foto_deneyleri.py` | Yukarıdaki fotoğraf deneylerini ve OpenFace adımını sırayla çalıştırır | hepsi |
+| `karsilastirma_canli.py` | Kamerada FER ve HSEmotion yan yana; 1–7 tuşlarıyla etiketli kayıt | `sonuclar.csv` |
+| `video_kaydet.py`, `au_analiz.py` | Video üzerinden OpenFace analizi (ek deney) | `ifadeler.avi`, `au_*.png` |
 | `modeller/face_detection_yunet_2023mar.onnx` | YuNet modeli (OpenCV Zoo) | |
 
-## Ortamlar
-
-İki ayrı sanal ortam kullanıldı, çünkü TensorFlow (fer) ve PyTorch'un bağımlılıkları çakışabiliyor.
-
-| Ortam | İçerik | Kullanım |
-|---|---|---|
-| `env_fer` | TensorFlow, fer, hsemotion-onnx, OpenCV 4.14, scikit-learn, matplotlib | Demo ve tüm analiz scriptleri |
-| `env_torch` | PyTorch 2.11 + CUDA 12.8 | GPU doğrulaması, ileride model eğitimi |
-
-Kurulum adımları `requirements_fer.txt` ve `requirements_torch.txt` dosyalarının başında yazıyor.
-
-## Çalıştırma
-
-`env_fer` ortamı etkinken:
+## Raporun sonuçlarını yeniden üretmek
 
 ```powershell
-python duygu_demo.py          # canlı demo (q: çıkış, s: ekran görüntüsü)
-python oturum_ozeti.py        # demo kapandıktan sonra görüşme özeti
+python kod\foto_indir.py        # fotoğrafları indir (bir kez)
+python kod\foto_deneyleri.py    # yüz bulma, duygu tahmini, değerlendirme ve OpenFace analizi
 ```
 
-İlk çalıştırmada HSEmotion modeli (`~/.hsemotion/` klasörüne, ~16 MB) internetten otomatik iner.
-
-OpenFace analizi için video `video_kaydet.py` ile kaydedildikten sonra, `ciktilar/` klasöründe:
-
-```powershell
-FeatureExtraction.exe -f ifadeler.avi -out_dir openface_cikti -aus
-python ..\au_analiz.py
-```
+OpenFace bulunamazsa ilk iki adım yine çalışır; kas hareketi adımı atlanır.
 
 ## Bilinen sorunlar ve çözümleri
 
 | Sorun | Çözüm |
 |---|---|
-| OpenCV 5'te `CascadeClassifier` yok | `opencv-python<5` |
-| hsemotion-onnx 0.3.1: `module 'urllib' has no attribute 'request'` | Scriptin başında `import urllib.request` |
+| OpenCV 5'te `CascadeClassifier` yok | `opencv-python<5` (requirements dosyasında sabit) |
+| hsemotion-onnx 0.3.1: `module 'urllib' has no attribute 'request'` | Scriptlerin başında `import urllib.request` var |
 | fer 25.x: `cannot import name 'FER' from 'fer'` | `from fer.fer import FER` |
 | fer: `No module named 'pkg_resources'` | `setuptools<81` |
-| Aynı ortamda iki farklı sürüm OpenCV paketi | İkisini kaldır, aynı 4.x sürümünü kur, contrib'i en son kur |
+| Aynı ortamda iki farklı OpenCV paketi | Kurulumdaki son satır: contrib paketini aynı sürümle en son kur |
