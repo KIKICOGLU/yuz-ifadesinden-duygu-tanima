@@ -9,10 +9,9 @@ Görüntü İşleme dersi proje ödevi · Konu (hoca önerisi): *Duygu Tanıma*
 | Alper Ekrem Demir | 2220656022 |
 | Mehmet Ali Kıkıçoğlu | 2220656044 |
 
-Bu repo projenin kaynak kodlarını, teknik ayrıntılarını, kullanım kılavuzunu, raporunu ve sunumunu içerir.
+Bu repo projenin kaynak kodlarını, teknik ayrıntılarını, kullanım kılavuzunu ve raporunu içerir.
 
 - 📄 Rapor: [`docs/Duygu_Tanima_Raporu.pdf`](docs/Duygu_Tanima_Raporu.pdf)
-- 📊 Sunum: [`docs/Duygu_Tanima_Sunum.pptx`](docs/Duygu_Tanima_Sunum.pptx)
 
 ---
 
@@ -94,7 +93,7 @@ yuz-ifadesinden-duygu-tanima/
 │   ├── motor.py                   ortak motor: YuNet + HSEmotion, çizim, özet
 │   ├── foto_degerlendir.py, video_degerlendir.py, canli_degerlendir.py
 │   └── README.md
-└── docs/                     ← rapor (PDF), sunum (PPTX) ve arayüz ekran görüntüleri
+└── docs/                     ← rapor (PDF) ve arayüz ekran görüntüleri
 ```
 
 ## 5. Kurulum
